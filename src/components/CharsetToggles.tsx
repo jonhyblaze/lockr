@@ -14,18 +14,29 @@ const CharsetToggles = ({ className }: { className?: string }) => {
   const dispatch = useDispatch()
   const charset = useSelector((state: RootState) => state.password.charset)
 
+  const activeCount = Object.values(charset).filter(Boolean).length
+
   return (
     <ul className={className}>
-      {charsetConfig.map((item) => (
+      {charsetConfig.map((item) => {
+        const key = item.name as keyof Charset
+        const isChecked = charset[key]
+        // The last active charset can't be turned off, so disable it to make
+        // that clear instead of letting the click silently do nothing.
+        const isLastActive = isChecked && activeCount === 1
+
+        return (
         <li className="flex items-center gap-2" key={item.val}>
           <Checkbox
-            name={item.name as keyof Charset}
-            checked={charset[item.name as keyof Charset]}
-            onChange={() => dispatch(toggleCharset(item.name as keyof Charset))}
+            name={key}
+            checked={isChecked}
+            disabled={isLastActive}
+            onChange={() => dispatch(toggleCharset(key))}
           />
           <label className="font-code font-bold">{item.val}</label>
         </li>
-      ))}
+        )
+      })}
     </ul>
   )
 }

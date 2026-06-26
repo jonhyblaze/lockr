@@ -1,53 +1,50 @@
-import "./app.css"
-
 import { useSelector } from "react-redux"
-
 import { generatePassword } from "./lib/generator"
-import { useMemo, useState } from "preact/hooks"
+import { useEffect, useState } from "preact/hooks"
 import type { RootState } from "./store/store"
 import { useBackground } from "./hooks/useBackground"
+import { useScramble } from "./hooks/useScramble"
 import { cn } from "./lib/cn"
-import analyzePassword from "./lib/analyzer"
+import analyzePassword, { generateFeedback } from "./lib/analyzer"
 import PasswordDisplay from "./components/PasswordDisplay"
 import CharsetToggles from "./components/CharsetToggles"
-import LengthRange from "./components/LengthRange"
+import LengthSlider from "./components/LengthSlider"
+import ProductHeader from "./components/ProductHeader"
+import GenerateButton from "./components/GenerateButton"
 
 export function App() {
-  const [tick, setTick] = useState(0)
-
   const length = useSelector((state: RootState) => state.password.length)
   const charset = useSelector((state: RootState) => state.password.charset)
-  const password = useMemo(() => generatePassword({ length, charset }), [length, charset, tick])
+
+  const [password, setPassword] = useState(() => generatePassword({ length, charset }))
+
   const complexity = analyzePassword(password)
   const bg = useBackground(complexity)
+  const { estimate, timeframe } = generateFeedback(length, complexity)
+
+  const regenerate = () => setPassword(generatePassword({ length, charset }))
+
+  useEffect(() => { regenerate() }, [length, charset])
 
 
   return (
-    <>
-      <main className={cn("w-full h-full", bg)} >
-        <section class="mx-auto px-4 space-y-8 w-full h-full flex flex-col md:flex-row items-center justify-center">
-          <header className="">
-            <h1 class="text-3xl font-bold font-code">Password Generator</h1>
-          </header>
-          <div className="space-y-4">
-            <PasswordDisplay password={password} />
-            <button
-              type="button"
-              onClick={() => {
-                setTick((prev) => prev + 1)
-              }}
-              className="cursor-pointer bg-black border-black text-white block w-full p-3 font-code text-[21px] font-bold">
-              Generate
-            </button>
-            <div className="space-y-2">
-              <p className="font-code">Paranoid - {complexity}</p>
-              <p className="font-code">It will take some time to hack this</p>
-            </div>
-            <LengthRange length={length} />
-            <CharsetToggles className="grid grid-cols-2 gap-y-10"/>
-          </div>
-        </section>
-      </main>
-    </>
+    <main className={cn("w-full h-full px-4", bg)}>
+      <ProductHeader />
+      <div class="w-full h-full flex flex-col justify-center sm:items-center">
+        <header className="pb-4 sm:w-110">
+          <h1 class="text-[26px] se:text-3xl font-bold font-code pb-5">Password Generator</h1>
+          <PasswordDisplay password={password} />
+          <GenerateButton onGenerate={regenerate} />
+          <footer className="mt-6">
+            <p className="font-code capitalize pb-2">{useScramble(estimate)}</p>
+            <p className="min-h-14 font-code">{useScramble(`It will take ${timeframe} to crack it`)}</p>
+          </footer>
+        </header>
+        <div className="sm:w-110">
+          <LengthSlider className="pb-8 space-y-3" sliderClsx="w-[98%] sm:w-108" />
+          <CharsetToggles className="grid grid-cols-4 gap-5 sm:gap-15" />
+        </div>
+      </div>
+    </main>
   )
 }

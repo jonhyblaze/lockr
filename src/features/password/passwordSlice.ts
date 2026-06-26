@@ -32,6 +32,12 @@ const passwordSlice = createSlice({
 
     toggleCharset(state, action: PayloadAction<keyof Charset>) {
       const key = action.payload
+
+      // Don't allow turning off the last active charset — an empty charset
+      // produces a garbage password (the generator has nothing to pick from).
+      const activeCount = Object.values(state.charset).filter(Boolean).length
+      if (state.charset[key] && activeCount === 1) return
+
       state.charset[key] = !state.charset[key]
     },
 

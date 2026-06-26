@@ -5,8 +5,9 @@
   --font-code: "Source Code Pro", monospace;
   --color-ui-text: #282828;
   --color-ui-accent: #ddd;
-
-  --text-body: @apply "text-base"
+  --breakpoint-promax: 26.875rem;
+  --breakpoint-se:23.44rem;
+  --text-body: 1rem;
 }
 
 html,

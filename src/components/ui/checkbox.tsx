@@ -1,11 +1,13 @@
 const Checkbox = ({
   name,
   checked,
-  onChange
+  onChange,
+  disabled
 }: {
   name: string
   checked: boolean
   onChange: () => void
+  disabled?: boolean
 }) => {
   return (
     <input
@@ -13,7 +15,8 @@ const Checkbox = ({
       name={name}
       checked={checked}
       onChange={onChange}
-      className="size-7 accent-black hover:accent-zinc-700 rounded-none text-white"
+      disabled={disabled}
+      className="size-7 accent-black hover:accent-zinc-700 rounded-none text-white disabled:cursor-not-allowed"
     />
   )
 }

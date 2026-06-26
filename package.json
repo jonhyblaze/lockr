@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc -b --pretty && printf '\\n✅ Type check passed — no errors\\n' || { printf '\\n❌ Type check failed — see report above\\n'; exit 1; }"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.12.0",
