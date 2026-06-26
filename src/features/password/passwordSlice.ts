@@ -10,6 +10,7 @@ export type Charset = {
 export type PasswordState = {
   length: number
   charset: Charset
+  value: string
 }
 
 const initialState: PasswordState = {
@@ -19,7 +20,8 @@ const initialState: PasswordState = {
     lower: true,
     numbers: true,
     symbols: true
-  }
+  },
+  value: ""
 }
 
 const passwordSlice = createSlice({
@@ -41,9 +43,19 @@ const passwordSlice = createSlice({
       state.charset[key] = !state.charset[key]
     },
 
+    /* Stores a freshly generated password. The generation itself (impure —
+      it calls Math.random) happens in the listener middleware, so the
+      reducer stays pure and just records the result. */
+    setPassword(state, action: PayloadAction<string>) {
+      state.value = action.payload
+    },
 
+    /* A signal action: carries no payload and changes no state. The listener
+      middleware reacts to it (alongside setLength/toggleCharset) to produce
+      a new password. Dispatched by the Generate button.*/
+    regenerate() {}
   }
 })
 
-export const { setLength, toggleCharset } = passwordSlice.actions
+export const { setLength, toggleCharset, setPassword, regenerate } = passwordSlice.actions
 export default passwordSlice.reducer

@@ -1,7 +1,6 @@
-import { useSelector } from "react-redux"
-import { generatePassword } from "./lib/generator"
-import { useEffect, useState } from "preact/hooks"
+import { useDispatch, useSelector } from "react-redux"
 import type { RootState } from "./store/store"
+import { regenerate } from "./features/password/passwordSlice"
 import { useBackground } from "./hooks/useBackground"
 import { useScramble } from "./hooks/useScramble"
 import { cn } from "./lib/cn"
@@ -13,19 +12,13 @@ import ProductHeader from "./components/ProductHeader"
 import GenerateButton from "./components/GenerateButton"
 
 export function App() {
+  const dispatch = useDispatch()
   const length = useSelector((state: RootState) => state.password.length)
-  const charset = useSelector((state: RootState) => state.password.charset)
-
-  const [password, setPassword] = useState(() => generatePassword({ length, charset }))
+  const password = useSelector((state: RootState) => state.password.value)
 
   const complexity = analyzePassword(password)
   const bg = useBackground(complexity)
   const { estimate, timeframe } = generateFeedback(length, complexity)
-
-  const regenerate = () => setPassword(generatePassword({ length, charset }))
-
-  useEffect(() => { regenerate() }, [length, charset])
-
 
   return (
     <main className={cn("w-full h-full px-4", bg)}>
@@ -34,7 +27,7 @@ export function App() {
         <header className="pb-4 sm:w-110">
           <h1 class="text-[26px] se:text-3xl font-bold font-code pb-5">Password Generator</h1>
           <PasswordDisplay password={password} />
-          <GenerateButton onGenerate={regenerate} />
+          <GenerateButton onGenerate={() => dispatch(regenerate())} />
           <footer className="mt-6">
             <p className="font-code capitalize pb-2">{useScramble(estimate)}</p>
             <p className="min-h-14 font-code">{useScramble(`It will take ${timeframe} to crack it`)}</p>
