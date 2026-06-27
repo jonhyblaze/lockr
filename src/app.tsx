@@ -21,21 +21,23 @@ export function App() {
   const { estimate, timeframe } = generateFeedback(length, complexity)
 
   return (
-    <main className={cn("w-full h-full px-4", bg)}>
-      <ProductHeader />
-      <div class="w-full h-full flex flex-col justify-center sm:items-center">
-        <header className="pb-4 sm:w-110">
-          <h1 class="text-[26px] se:text-3xl font-bold font-code pb-5">Password Generator</h1>
-          <PasswordDisplay password={password} />
-          <GenerateButton onGenerate={() => dispatch(regenerate())} />
-          <footer className="mt-6">
-            <p className="font-code capitalize pb-2">{useScramble(estimate)}</p>
-            <p className="min-h-14 font-code">{useScramble(`It will take ${timeframe} to crack it`)}</p>
-          </footer>
-        </header>
-        <div className="sm:w-110">
-          <LengthSlider className="pb-8 space-y-3" sliderClsx="w-[98%] sm:w-108" />
-          <CharsetToggles className="grid grid-cols-4 gap-5 sm:gap-15" />
+    <main className={cn("w-full h-full px-4 relative", bg)}>
+      <div className="w-full h-full sm:max-w-118 sm:mx-auto">
+        <ProductHeader />
+        <div class="w-full h-full flex flex-col justify-center sm:items-center">
+          <header className="pb-4 sm:w-110">
+            <h1 class="text-[26px] se:text-3xl font-bold font-code pb-5">Password Generator</h1>
+            <PasswordDisplay password={password} />
+            <GenerateButton onGenerate={() => dispatch(regenerate())} />
+            <footer className="mt-6">
+              <p className="font-code capitalize pb-2">{useScramble(estimate)}</p>
+              <p className="min-h-14 font-code">{useScramble(`It will take ${timeframe} to crack it`)}</p>
+            </footer>
+          </header>
+          <div className="sm:w-110">
+            <LengthSlider className="pb-8 space-y-3" sliderClsx="w-[98%] sm:w-108" />
+            <CharsetToggles className="grid grid-cols-4 gap-5 sm:gap-15" />
+          </div>
         </div>
       </div>
     </main>

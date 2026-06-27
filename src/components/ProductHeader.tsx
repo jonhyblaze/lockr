@@ -1,6 +1,6 @@
 const ProductHeader = () => {
   return (
-    <header className="absolute top-0 left-0 flex items-center gap-2 px-4 py-5">
+    <header className="relative flex items-center gap-2 pl-2 pt-12 ">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
