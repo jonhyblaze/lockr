@@ -27,11 +27,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: npm
-      # `npm install` (not `npm ci`): npm prunes platform-specific optional
-      # native binaries (rolldown/rollup) based on the lockfile's generating
-      # OS, so `npm ci` on Linux can miss the linux binding. `npm install`
-      # re-resolves optionals for the runner's platform.
-      - run: npm install
+      # Fresh resolve on the runner's platform. The committed package-lock.json
+      # is generated on macOS and triggers npm's optional-dependency bug
+      # (https://github.com/npm/cli/issues/4828), so the Linux rolldown/rollup
+      # native binding is missing under both `npm ci` and `npm install`.
+      # Removing the lockfile lets npm install the correct platform binary.
+      - run: rm -f package-lock.json && npm install
       - run: npm run typecheck --workspace @lockr/web
       - run: npm run build --workspace @lockr/web
