@@ -14,7 +14,7 @@ All three share the same generation + strength-analysis logic, organized as a mo
 
 ### Web
 
-Live: **https://lockr.netlify.app** _(update once your Netlify site is connected)_
+Live: **https://lockr-web.netlify.app** 
 
 ```bash
 npm install
