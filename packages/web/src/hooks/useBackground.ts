@@ -1,4 +1,4 @@
-import type { Complexity } from "../lib/analyzer"
+import type { Complexity } from "@lockr/core"
 
 export function useBackground(complexity: Complexity) {
   const colors = {

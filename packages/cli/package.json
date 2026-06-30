@@ -1,0 +1,28 @@
+{
+  "name": "@lockr/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "lockr": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsx cli.tsx",
+    "start": "tsx cli.tsx",
+    "build": "esbuild cli.tsx --bundle --platform=node --format=esm --target=node20 --packages=external --alias:@lockr/core=../core/index.ts --banner:js='#!/usr/bin/env node' --outfile=dist/cli.js && chmod +x dist/cli.js",
+    "prepare": "npm run build",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@lockr/core": "*",
+    "ink": "^6",
+    "react": "^19"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "esbuild": "^0.25.0"
+  }
+}

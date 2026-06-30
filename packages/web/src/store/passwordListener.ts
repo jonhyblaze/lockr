@@ -1,7 +1,7 @@
 import { createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit"
 import type { RootState } from "./store"
 import { setLength, toggleCharset, regenerate, setPassword } from "@/features/password/passwordSlice"
-import { generatePassword } from "@/lib/generator"
+import { generatePassword } from "@lockr/core"
 
 export const passwordListener = createListenerMiddleware()
 
