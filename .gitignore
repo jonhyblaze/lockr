@@ -12,6 +12,14 @@ dist
 dist-ssr
 *.local
 
+# Not committed: vite/rolldown ship platform-specific native binaries as
+# optional deps, and npm's lockfile install (npm ci / npm install with a
+# lockfile) leaves the wrong-platform binary out on CI/Netlify
+# (https://github.com/npm/cli/issues/4828). A fresh `npm install` resolves the
+# correct binary per platform; web deps are pinned to exact versions so this
+# stays deterministic.
+package-lock.json
+
 # Go (cli-go): build output + the synced copy of core/feedback.json
 packages/cli-go/bin
 packages/cli-go/internal/password/feedback.json
