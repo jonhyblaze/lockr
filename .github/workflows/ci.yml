@@ -28,6 +28,10 @@ jobs:
         with:
           node-version: "20"
           cache: npm
-      - run: npm ci
+      # `npm install` (not `npm ci`): npm prunes platform-specific optional
+      # native binaries (rolldown/rollup) based on the lockfile's generating
+      # OS, so `npm ci` on Linux can miss the linux binding. `npm install`
+      # re-resolves optionals for the runner's platform.
+      - run: npm install
       - run: npm run typecheck --workspace @lockr/web
       - run: npm run build --workspace @lockr/web
