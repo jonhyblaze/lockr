@@ -1,0 +1,40 @@
+{
+  "short": [
+    "silly",
+    "poor",
+    "compromised",
+    "fragile",
+    "descent",
+    "safe",
+    "solid",
+    "secure",
+    "overkill",
+    "paranoid"
+  ],
+  "time": [
+    "no time",
+    "split seconds",
+    "less than 1 second",
+    "few seconds",
+    "less than minute",
+    "less than an hour",
+    "few hours",
+    "a busy day",
+    "a week",
+    "a month",
+    "few months",
+    "about a year",
+    "couple of years",
+    "a decade",
+    "a century",
+    "thousands of years",
+    "half a million years",
+    "a million years",
+    "100 million years",
+    "a billion years",
+    "a trillion years",
+    "as long as sun shines",
+    "as long as galaxy expands",
+    "forever"
+  ]
+}

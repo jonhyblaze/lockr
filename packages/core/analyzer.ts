@@ -1,3 +1,5 @@
+import feedbackMap from "./feedback.json"
+
 export type Complexity = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
 // The four character classes a password can draw from, with the size of
@@ -26,36 +28,6 @@ const countSequential = (password: string) => {
     if (ascending || descending || repeated) count++
   }
   return count
-}
-
-const feedbackMap = {
-  short: ["silly", "poor", "compromised", "fragile", "descent", "safe", "solid", "secure", "overkill", "paranoid"],
-  time: [
-    "no time",
-    "split seconds",
-    "less than 1 second",
-    "few seconds",
-    "less than minute",
-    "less than an hour",
-    "few hours",
-    "a busy day",
-    "a week",
-    "a month",
-    "few months",
-    "about a year",
-    "couple of years",
-    "a decade",
-    "a century",
-    "thousands of years",
-    "half a million years",
-    "a million years",
-    "100 million years",
-    "a billion years",
-    "a trillion years",
-    "as long as sun shines",
-    "as long as galaxy expands",
-    "forever"
-  ]
 }
 
 /**

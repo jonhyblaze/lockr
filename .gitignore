@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Go (cli-go): build output + the synced copy of core/feedback.json
+packages/cli-go/bin
+packages/cli-go/internal/password/feedback.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

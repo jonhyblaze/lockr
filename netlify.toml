@@ -1,0 +1,16 @@
+# Netlify build config for the @lockr/web PWA.
+# Netlify runs `npm install` at the repo root first (which links the
+# @lockr/core workspace), then this build command.
+[build]
+  command = "npm run build --workspace @lockr/web"
+  publish = "packages/web/dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Single-page app: serve index.html for any unmatched path. Real files
+# (assets, manifest, service worker) are served before this fallback.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

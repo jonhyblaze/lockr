@@ -1,0 +1,42 @@
+name: release
+
+# Cuts a GitHub Release with prebuilt `lockr` binaries whenever a vX.Y.Z tag
+# is pushed. The same tag also makes `go install ...@latest` resolve.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26"
+
+      - name: Sync shared feedback data
+        run: cp packages/core/feedback.json packages/cli-go/internal/password/feedback.json
+
+      - name: Build binaries
+        run: |
+          mkdir -p dist
+          targets="darwin/amd64 darwin/arm64 linux/amd64 linux/arm64 windows/amd64"
+          for t in $targets; do
+            os="${t%/*}"; arch="${t#*/}"
+            out="dist/lockr_${os}_${arch}"
+            [ "$os" = "windows" ] && out="${out}.exe"
+            echo "building $out"
+            GOOS="$os" GOARCH="$arch" CGO_ENABLED=0 \
+              go build -ldflags="-s -w" -o "$out" ./packages/cli-go/cmd/lockr
+          done
+          ls -la dist
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          generate_release_notes: true

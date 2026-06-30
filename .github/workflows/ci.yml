@@ -1,0 +1,33 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  go:
+    name: Go CLI (lockr)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26"
+      - name: Sync shared feedback data
+        run: cp packages/core/feedback.json packages/cli-go/internal/password/feedback.json
+      - run: go vet ./...
+      - run: go test ./...
+
+  web:
+    name: Web (build + typecheck)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck --workspace @lockr/web
+      - run: npm run build --workspace @lockr/web
