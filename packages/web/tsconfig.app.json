@@ -7,8 +7,12 @@
     "types": ["vite/client"],
     "skipLibCheck": true,
     "paths": {
-      "react": ["./node_modules/preact/compat/"],
-      "react-dom": ["./node_modules/preact/compat/"],
+      // Resolve React imports to preact/compat. List both the workspace-local
+      // and the hoisted (root) node_modules so this works regardless of where
+      // npm places preact — otherwise TS silently falls back to @types/react
+      // and its types conflict with preact's.
+      "react": ["./node_modules/preact/compat/", "../../node_modules/preact/compat/"],
+      "react-dom": ["./node_modules/preact/compat/", "../../node_modules/preact/compat/"],
       "@/*": ["./src/*"]
     },
 
