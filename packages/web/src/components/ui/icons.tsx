@@ -10,4 +10,95 @@ const Copy = (props: IconProps) => {
   )
 }
 
-export { Copy }
+
+const LockrName = (props: IconProps) => {
+  return (
+    <svg width="196" height="96" viewBox="0 0 196 96" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <rect x="8" y="50" width="8" height="8" fill="currentColor"/>
+    <rect x="8" y="42" width="8" height="8" fill="currentColor"/>
+    <rect x="8" y="34" width="8" height="8" fill="currentColor"/>
+    <rect x="8" y="26" width="8" height="8" fill="currentColor"/>
+    <rect x="16" y="58" width="8" height="8" fill="currentColor"/>
+    <rect x="24" y="58" width="8" height="8" fill="currentColor"/>
+    <rect x="46" y="58" width="8" height="8" fill="currentColor"/>
+    <rect x="84" y="58" width="8" height="8" fill="currentColor"/>
+    <rect x="54" y="58" width="8" height="8" fill="currentColor"/>
+    <rect x="92" y="58" width="8" height="8" fill="currentColor"/>
+    <rect x="62" y="50" width="8" height="8" fill="currentColor"/>
+    <rect x="100" y="50" width="8" height="8" fill="currentColor"/>
+    <rect x="116" y="58" width="8" height="8" fill="currentColor"/>
+    <rect x="116" y="50" width="8" height="8" fill="currentColor"/>
+    <rect x="116" y="42" width="8" height="8" fill="currentColor"/>
+    <rect x="116" y="34" width="8" height="8" fill="currentColor"/>
+    <rect x="116" y="26" width="8" height="8" fill="currentColor"/>
+    <rect x="124" y="42" width="8" height="8" fill="currentColor"/>
+    <rect x="132" y="50" width="8" height="8" fill="currentColor"/>
+    <rect x="140" y="58" width="8" height="8" fill="currentColor"/>
+    <rect x="155" y="58" width="8" height="8" fill="currentColor"/>
+    <rect x="155" y="50" width="8" height="8" fill="currentColor"/>
+    <rect x="155" y="42" width="8" height="8" fill="currentColor"/>
+    <rect x="155" y="34" width="8" height="8" fill="currentColor"/>
+    <rect x="155" y="26" width="8" height="8" fill="currentColor"/>
+    <rect x="163" y="26" width="8" height="8" fill="currentColor"/>
+    <rect x="171" y="26" width="8" height="8" fill="currentColor"/>
+    <rect x="179" y="34" width="8" height="8" fill="currentColor"/>
+    <rect x="171" y="42" width="8" height="8" fill="currentColor"/>
+    <rect x="171" y="50" width="8" height="8" fill="currentColor"/>
+    <rect x="179" y="58" width="8" height="8" fill="currentColor"/>
+    <rect x="163" y="42" width="8" height="8" fill="currentColor"/>
+    <rect x="132" y="34" width="8" height="8" fill="currentColor"/>
+    <rect x="140" y="26" width="8" height="8" fill="currentColor"/>
+    <rect x="62" y="42" width="8" height="8" fill="currentColor"/>
+    <rect x="62" y="34" width="8" height="8" fill="currentColor"/>
+    <rect x="100" y="34" width="8" height="8" fill="currentColor"/>
+    <rect x="38" y="42" width="8" height="8" fill="currentColor"/>
+    <rect x="76" y="42" width="8" height="8" fill="currentColor"/>
+    <rect x="38" y="34" width="8" height="8" fill="currentColor"/>
+    <rect x="76" y="34" width="8" height="8" fill="currentColor"/>
+    <rect x="46" y="26" width="8" height="8" fill="currentColor"/>
+    <rect x="84" y="26" width="8" height="8" fill="currentColor"/>
+    <rect x="54" y="26" width="8" height="8" fill="currentColor"/>
+    <rect x="92" y="26" width="8" height="8" fill="currentColor"/>
+    <rect x="38" y="50" width="8" height="8" fill="currentColor"/>
+    <rect x="76" y="50" width="8" height="8" fill="currentColor"/>
+    </svg>
+
+  )
+}
+
+const LockrLogo = (props: IconProps) => {
+  return (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <rect x="8" y="32" width="8" height="8" fill="currentColor"/>
+      <rect x="16" y="32" width="8" height="8" fill="currentColor"/>
+      <rect x="24" y="32" width="8" height="8" fill="currentColor"/>
+      <rect x="32" y="32" width="8" height="8" fill="currentColor"/>
+      <rect x="16" width="8" height="8" fill="currentColor"/>
+      <rect x="24" width="8" height="8" fill="currentColor"/>
+      <rect x="32" width="8" height="8" fill="currentColor"/>
+      <rect x="40" width="8" height="8" fill="currentColor"/>
+      <rect y="16" width="8" height="8" fill="currentColor"/>
+      <rect x="12" y="25" width="4" height="4" fill="currentColor"/>
+      <rect x="12" y="11" width="4" height="4" fill="currentColor"/>
+      <rect x="12" y="18" width="4" height="4" fill="currentColor"/>
+      <rect x="22" y="11" width="4" height="4" fill="currentColor"/>
+      <rect x="32" y="11" width="4" height="4" fill="currentColor"/>
+      <rect x="32" y="18" width="4" height="4" fill="currentColor"/>
+      <rect x="32" y="25" width="4" height="4" fill="currentColor"/>
+      <rect x="22" y="25" width="4" height="4" fill="currentColor"/>
+      <rect x="22" y="18" width="4" height="4" fill="currentColor"/>
+      <rect y="8" width="8" height="8" fill="currentColor"/>
+      <rect x="40" y="24" width="8" height="8" fill="currentColor"/>
+      <rect x="40" y="16" width="8" height="8" fill="currentColor"/>
+      <rect x="40" y="8" width="8" height="8" fill="currentColor"/>
+      <rect y="24" width="8" height="8" fill="currentColor"/>
+      <rect y="32" width="8" height="8" fill="currentColor"/>
+      <rect x="8" width="8" height="8" fill="currentColor"/>
+    </svg>
+
+  )
+}
+
+
+
+export { Copy, LockrName, LockrLogo }
