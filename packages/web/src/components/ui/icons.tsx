@@ -69,36 +69,12 @@ const LockrName = (props: IconProps) => {
 const LockrLogo = (props: IconProps) => {
   return (
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <rect x="8" y="32" width="8" height="8" fill="currentColor"/>
-      <rect x="16" y="32" width="8" height="8" fill="currentColor"/>
-      <rect x="24" y="32" width="8" height="8" fill="currentColor"/>
-      <rect x="32" y="32" width="8" height="8" fill="currentColor"/>
-      <rect x="16" width="8" height="8" fill="currentColor"/>
-      <rect x="24" width="8" height="8" fill="currentColor"/>
-      <rect x="32" width="8" height="8" fill="currentColor"/>
-      <rect x="40" width="8" height="8" fill="currentColor"/>
-      <rect y="16" width="8" height="8" fill="currentColor"/>
-      <rect x="12" y="25" width="4" height="4" fill="currentColor"/>
-      <rect x="12" y="11" width="4" height="4" fill="currentColor"/>
-      <rect x="12" y="18" width="4" height="4" fill="currentColor"/>
-      <rect x="22" y="11" width="4" height="4" fill="currentColor"/>
-      <rect x="32" y="11" width="4" height="4" fill="currentColor"/>
-      <rect x="32" y="18" width="4" height="4" fill="currentColor"/>
-      <rect x="32" y="25" width="4" height="4" fill="currentColor"/>
-      <rect x="22" y="25" width="4" height="4" fill="currentColor"/>
-      <rect x="22" y="18" width="4" height="4" fill="currentColor"/>
-      <rect y="8" width="8" height="8" fill="currentColor"/>
-      <rect x="40" y="24" width="8" height="8" fill="currentColor"/>
-      <rect x="40" y="16" width="8" height="8" fill="currentColor"/>
-      <rect x="40" y="8" width="8" height="8" fill="currentColor"/>
-      <rect y="24" width="8" height="8" fill="currentColor"/>
-      <rect y="32" width="8" height="8" fill="currentColor"/>
-      <rect x="8" width="8" height="8" fill="currentColor"/>
+      <rect x="34" y="20" width="9" height="9" fill="currentColor"/>
+      <rect x="19" y="20" width="9" height="9" fill="currentColor"/>
+      <rect x="5" y="20" width="9" height="9" fill="currentColor"/>
     </svg>
 
   )
 }
-
-
 
 export { Copy, LockrName, LockrLogo }

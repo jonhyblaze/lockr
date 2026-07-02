@@ -24,7 +24,7 @@ export function App() {
     <main className={cn("w-full h-full px-4 relative", bg)}>
       <div className="w-full h-full sm:max-w-118 sm:mx-auto">
         <ProductHeader />
-        <div class="w-full h-full flex flex-col justify-center sm:items-center">
+        <div class="w-full h-full flex flex-col se:pt-24 sm:items-center">
           <header className="pb-4 sm:w-110">
             <h1 class="text-[26px] se:text-3xl font-bold font-code pb-5">Password Generator</h1>
             <PasswordDisplay password={password} />
